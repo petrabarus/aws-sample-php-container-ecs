@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    build: './docker/nginx'
+    depends_on:
+      - fpm
+    ports:
+      - '8080:80'
+  fpm:
+    build: '.'
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./src/:/app/src/
