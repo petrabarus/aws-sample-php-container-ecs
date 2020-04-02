@@ -5,9 +5,9 @@ RUN wget -O /usr/local/bin/php-fpm-healthcheck \
     https://raw.githubusercontent.com/renatomefi/php-fpm-healthcheck/master/php-fpm-healthcheck \
     && chmod +x /usr/local/bin/php-fpm-healthcheck
 COPY ./docker/fpm/healthcheck.conf /usr/local/etc/php-fpm.d/
-RUN mkdir -p /app
-ADD ./src/ /app/
+RUN mkdir -p /app/src/
+ADD ./src/ /app/src/
 
-WORKDIR /app
+WORKDIR /app/src/
 
 HEALTHCHECK --interval=1m --timeout=3s CMD php-fpm-healthcheck || exit 1

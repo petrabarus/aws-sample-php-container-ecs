@@ -4,7 +4,7 @@ import * as ecs from "@aws-cdk/aws-ecs";
 import * as ecsPatterns from "@aws-cdk/aws-ecs-patterns";
 import { VpcStackProps, shortHealthCheck } from '../lib/shared';
 
-export class Stack1 extends cdk.Stack {
+export class AppStack extends cdk.Stack {
     constructor(scope: cdk.Construct, id: string, props: VpcStackProps) {
         super(scope, id, props);
     
