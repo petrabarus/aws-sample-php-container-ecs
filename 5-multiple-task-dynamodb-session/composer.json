@@ -1,0 +1,12 @@
+{
+    "name": "barusp/5-multiple-task-dynamodb-session",
+    "authors": [
+        {
+            "name": "Petra Barus",
+            "email": "petra.barus@gmail.com"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.134"
+    }
+}
