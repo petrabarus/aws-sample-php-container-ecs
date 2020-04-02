@@ -16,17 +16,20 @@ export class Stack1 extends cdk.Stack {
         const cluster = new ecs.Cluster(this, 'Cluster', {
             vpc: vpc
         });
+        cluster.addCapacity('DefaultAutoScalingGroup', {
+            instanceType: new ec2.InstanceType('t2.small')
+        })
         return cluster;
     }
 
     private createService(cluster: ecs.Cluster) {
-        const service = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'Service1', {
+        const service = new ecsPatterns.ApplicationLoadBalancedEc2Service(this, 'Service1', {
             cluster: cluster,
             taskImageOptions: {
                 image: ecs.ContainerImage.fromAsset(__dirname),
-              },
+            },
+            memoryLimitMiB: 128
         });
-
         service.targetGroup.configureHealthCheck(shortHealthCheck);
     }
 }
