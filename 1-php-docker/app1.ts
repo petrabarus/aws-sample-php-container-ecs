@@ -17,8 +17,8 @@ export class Stack1 extends cdk.Stack {
             vpc: vpc
         });
         cluster.addCapacity('DefaultAutoScalingGroup', {
-            instanceType: new ec2.InstanceType('t2.small')
-        })
+            instanceType: new ec2.InstanceType('t2.micro')
+        });
         return cluster;
     }
 
