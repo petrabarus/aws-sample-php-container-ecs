@@ -8,7 +8,7 @@ import { AppStack as Stack4 } from './4-multiple-task-local-session/app';
 import { AppStack as Stack5 } from './5-multiple-task-dynamodb-session/app';
 import { AppStack as Stack6 } from './6-php-docker-fargate/app'
 import { AppStack as Stack7 } from './7-php-separate-nginx-fpm-fargate/app';
-import { AppStack as Stack8 } from './8-separate-nginx-fpm-shared-volume-fargate/app'
+import { AppStack as Stack8 } from './8-separate-nginx-fpm-shared-volume-fargate/app';
 
 const app = new cdk.App();
 const vpcStack = new SharedVpcStack(app, 'SharedVpcStack');
