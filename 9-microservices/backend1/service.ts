@@ -20,7 +20,8 @@ export class ServiceStack extends cdk.Stack {
                 image: ecs.ContainerImage.fromAsset(__dirname),
             },
             desiredCount: 3,
-            memoryLimitMiB: 128
+            memoryLimitMiB: 128,
+            publicLoadBalancer: false,
         });
         service.targetGroup.configureHealthCheck(shortHealthCheck);
 
