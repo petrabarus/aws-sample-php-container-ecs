@@ -48,12 +48,12 @@ export class AppStack extends cdk.Stack {
         container.addPortMappings({containerPort: 80});
         container.addMountPoints({
             sourceVolume: 'task',
-            containerPath: '/tmp/assets/',
+            containerPath: '/tmp/assets',
             readOnly: false,
         });
         return container;
     }
-    
+
     private createFpmContainer(taskDef: ecs.FargateTaskDefinition) {
         const container = taskDef.addContainer('fpm', {
             image: ecs.ContainerImage.fromAsset(__dirname),
@@ -64,7 +64,7 @@ export class AppStack extends cdk.Stack {
         container.addPortMappings({containerPort:9000});
         container.addMountPoints({
             sourceVolume: 'task',
-            containerPath: '/tmp/assets/',
+            containerPath: '/tmp/assets',
             readOnly: false,
         });
 

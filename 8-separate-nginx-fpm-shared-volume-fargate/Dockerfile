@@ -8,8 +8,8 @@ RUN wget -O /usr/local/bin/php-fpm-healthcheck \
 COPY ./docker/fpm/healthcheck.conf /usr/local/etc/php-fpm.d/
 
 RUN mkdir -p /tmp/assets
-VOLUME ['/tmp/assets']
 RUN chown -R www-data:www-data /tmp/assets
+VOLUME ['/tmp/assets/']
 
 RUN mkdir -p /app/src/
 COPY --chown=www-data:www-data ./src/ /app/src/
