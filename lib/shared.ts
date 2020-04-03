@@ -1,5 +1,6 @@
 import * as cdk from "@aws-cdk/core";
 import * as ec2 from "@aws-cdk/aws-ec2";
+import * as ecs from "@aws-cdk/aws-ecs";
 import * as elbv2 from "@aws-cdk/aws-elasticloadbalancingv2" 
 
 class SharedVpcStack extends cdk.Stack {
@@ -14,6 +15,10 @@ interface VpcStackProps extends cdk.StackProps {
     vpc: ec2.IVpc;
 }
 
+interface MicroserviceStackProps extends cdk.StackProps {
+    cluster: ecs.Cluster
+}
+
 const shortHealthCheck: elbv2.HealthCheck = {
     "interval": cdk.Duration.seconds(5),
     "timeout": cdk.Duration.seconds(4),
@@ -22,4 +27,4 @@ const shortHealthCheck: elbv2.HealthCheck = {
     "healthyHttpCodes": "200,301,302"
 }
 
-export {SharedVpcStack, VpcStackProps, shortHealthCheck};
+export {SharedVpcStack, VpcStackProps, MicroserviceStackProps, shortHealthCheck};

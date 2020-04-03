@@ -1,0 +1,26 @@
+version: '3'
+services:
+  frontend:
+    build: './frontend'
+    ports:
+      - '8080:80'
+    volumes:
+     -  ./frontend/src/:/var/www/html/
+    environment:
+    - BACKEND1_URL=http://backend1/
+    - BACKEND2_URL=http://backend2/
+    depends_on:
+    - backend1
+    - backend2
+  backend1:
+    build: './backend1'
+    ports:
+      - '8081:80'
+    volumes:
+     -  ./backend1/src/:/var/www/html/
+  backend2:
+    build: './backend2'
+    ports:
+      - '8082:80'
+    volumes:
+     -  ./backend2/src/:/var/www/html/
