@@ -1,16 +1,16 @@
 import * as cdk from '@aws-cdk/core';
 import * as ecs from "@aws-cdk/aws-ecs";
 import * as ecsPatterns from "@aws-cdk/aws-ecs-patterns";
-import { MicroserviceStackProps, shortHealthCheck } from '../../lib/shared';
+import { MicroserviceProps, shortHealthCheck } from '../../lib/shared';
 
-export class ServiceStack extends cdk.Stack {
+export class Service extends cdk.Construct {
     constructor(
         scope: cdk.Construct,
         id: string,
         backend1Url: string,
         backend2Url: string,
-        props: MicroserviceStackProps) {
-        super(scope, id, props);
+        props: MicroserviceProps) {
+        super(scope, id);
         this.createService(props.cluster, backend1Url, backend2Url);
     }
 

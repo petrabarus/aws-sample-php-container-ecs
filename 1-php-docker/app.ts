@@ -28,7 +28,8 @@ export class AppStack extends cdk.Stack {
             taskImageOptions: {
                 image: ecs.ContainerImage.fromAsset(__dirname),
             },
-            memoryLimitMiB: 128
+            memoryLimitMiB: 128,
+            desiredCount: 2
         });
         service.targetGroup.configureHealthCheck(shortHealthCheck);
     }

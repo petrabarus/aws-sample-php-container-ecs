@@ -25,6 +25,7 @@ export class AppStack extends cdk.Stack {
             taskImageOptions: {
                 image: ecs.ContainerImage.fromAsset(__dirname),
             },
+            desiredCount: 3,
         });
         service.targetGroup.configureHealthCheck(shortHealthCheck);
     }

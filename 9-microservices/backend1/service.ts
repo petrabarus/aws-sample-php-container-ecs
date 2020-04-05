@@ -1,13 +1,13 @@
 import * as cdk from '@aws-cdk/core';
 import * as ecs from "@aws-cdk/aws-ecs";
 import * as ecsPatterns from "@aws-cdk/aws-ecs-patterns";
-import { MicroserviceStackProps, shortHealthCheck } from '../../lib/shared';
+import { MicroserviceProps, shortHealthCheck } from '../../lib/shared';
 
-export class ServiceStack extends cdk.Stack {
+export class Service extends cdk.Construct {
     public readonly loadBalancerUrl: string;
 
-    constructor(scope: cdk.Construct, id: string, props: MicroserviceStackProps) {
-        super(scope, id, props);
+    constructor(scope: cdk.Construct, id: string, props: MicroserviceProps) {
+        super(scope, id);
         const service = this.createService(props.cluster);
 
         this.loadBalancerUrl = service.loadBalancer.loadBalancerDnsName;

@@ -2,6 +2,7 @@ import * as cdk from "@aws-cdk/core";
 import * as ec2 from "@aws-cdk/aws-ec2";
 import * as ecs from "@aws-cdk/aws-ecs";
 import * as elbv2 from "@aws-cdk/aws-elasticloadbalancingv2" 
+import * as servicediscovery from "@aws-cdk/aws-servicediscovery";
 
 class SharedVpcStack extends cdk.Stack {
     public readonly vpc: ec2.IVpc;
@@ -15,8 +16,9 @@ interface VpcStackProps extends cdk.StackProps {
     vpc: ec2.IVpc;
 }
 
-interface MicroserviceStackProps extends cdk.StackProps {
+interface MicroserviceProps {
     cluster: ecs.Cluster
+    namespace?: servicediscovery.PrivateDnsNamespace
 }
 
 const shortHealthCheck: elbv2.HealthCheck = {
@@ -27,4 +29,4 @@ const shortHealthCheck: elbv2.HealthCheck = {
     "healthyHttpCodes": "200,301,302"
 }
 
-export {SharedVpcStack, VpcStackProps, MicroserviceStackProps, shortHealthCheck};
+export {SharedVpcStack, VpcStackProps, MicroserviceProps, shortHealthCheck};
