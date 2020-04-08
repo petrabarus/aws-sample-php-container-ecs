@@ -37,9 +37,6 @@ export class AppStack extends cdk.Stack {
         });
         taskDefinition.addVolume({
             name: 'task',
-            host: {
-                sourcePath: "/tmp/assets"
-            }
         })
 
         const nginxContainer = this.createNginxContainer(taskDefinition);
